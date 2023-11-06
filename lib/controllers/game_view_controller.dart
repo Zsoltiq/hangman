@@ -5,23 +5,23 @@ import 'package:get/get.dart';
 import 'package:hangman/models/tipp.dart';
 import 'package:hangman/views/end_view.dart';
 
+
 class GameViewController extends GetxController {
   List<String> szovegek = [
-    "alma piros",
-    "az ég kék",
-    "gurul a szekér",
+    "a",
   ];
 
   String randomSzoveg = "";
   String csillagosSzoveg = "";
 
-  void randomSzovegGeneralasa() {
+  void init() {
     int index = Random().nextInt(szovegek.length);
     randomSzoveg = szovegek[index];
     csillagosSzoveg = "";
     for (int i = 0; i < randomSzoveg.length; i++) {
       csillagosSzoveg += "*";
     }
+    tippek=[];
     update();
   }
 
@@ -98,6 +98,6 @@ class GameViewController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    randomSzovegGeneralasa();
+    init();
   }
 }
