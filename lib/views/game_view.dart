@@ -6,49 +6,54 @@ import 'package:hangman/views/widgets/letter_holder.dart';
 import 'package:hangman/views/widgets/lettter_button.dart';
 
 class GameView extends StatelessWidget {
-  GameViewController controller = Get.put(GameViewController());
   @override
   Widget build(BuildContext context) {
+    GameViewController controller = Get.put(GameViewController(context));
+
     return GetBuilder<GameViewController>(
         init: controller,
         builder: (_) {
-          return Scaffold(
-              appBar: AppBar(
-                title: Text("Hangman"),
-              ),
-              body: Column(mainAxisAlignment: MainAxisAlignment.center,children: [
-                Image.asset("images/${controller.hibakSzama()}.png"),
-               
-                Text(controller.csillagosSzoveg,style: TextStyle(fontSize: 25),),
-                Column(children: [
-                  LetterHolder(
-                    controller: controller,
-                    letters: ["A", "Á", "B", "C", "D", "E"],
+          return (!controller.theInitIsDone)
+              ? Center(child: CircularProgressIndicator())
+              : Scaffold(
+                  appBar: AppBar(
+                    title: Text("Hangman"),
                   ),
-                  LetterHolder(
-                    controller: controller,
-                    letters: ["É", "F", "G", "H", "I", "Í"],
-                  ),
-                  LetterHolder(
-                    controller: controller,
-                    letters: ["J", "K", "L", "M", "N", "O"],
-                  ),
-                  LetterHolder(
-                    controller: controller,
-                    letters: ["Ó", "Ö", "Ő", "P", "Q", "R"],
-                  ),
-                  LetterHolder(
-                    controller: controller,
-                    letters: ["S", "T", "U", "Ú", "Ü", "Ű"],
-                  ),
-                  LetterHolder(
-                    controller: controller,
-                    letters: ["V", "W", "X", "Y", "Z", " "],
-                  ),
-                ])
-              ]));
+                  body: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset("images/${controller.hibakSzama()}.png"),
+                        Text(
+                          controller.csillagosSzoveg,
+                          style: TextStyle(fontSize: 25),
+                        ),
+                        Column(children: [
+                          LetterHolder(
+                            controller: controller,
+                            letters: ["A", "Á", "B", "C", "D", "E"],
+                          ),
+                          LetterHolder(
+                            controller: controller,
+                            letters: ["É", "F", "G", "H", "I", "Í"],
+                          ),
+                          LetterHolder(
+                            controller: controller,
+                            letters: ["J", "K", "L", "M", "N", "O"],
+                          ),
+                          LetterHolder(
+                            controller: controller,
+                            letters: ["Ó", "Ö", "Ő", "P", "Q", "R"],
+                          ),
+                          LetterHolder(
+                            controller: controller,
+                            letters: ["S", "T", "U", "Ú", "Ü", "Ű"],
+                          ),
+                          LetterHolder(
+                            controller: controller,
+                            letters: ["V", "W", "X", "Y", "Z", " "],
+                          ),
+                        ])
+                      ]));
         });
   }
 }
-
-

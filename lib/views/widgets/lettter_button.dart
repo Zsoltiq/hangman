@@ -15,7 +15,7 @@ class LetterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoButton.filled(
       padding: EdgeInsets.zero,
-      child: Text(letter),
+      child: Text(letter), 
       onPressed: (controller.aMegadottbetuVoltEmar(letter))
           ? null
           : () => controller.tippHozzaadasa(letter),
